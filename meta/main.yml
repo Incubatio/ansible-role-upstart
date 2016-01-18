@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Incubatio
+  description: ansible role to add an upstart service
+  min_ansible_version: 2.0
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  categories:
+    - system
+
+dependencies: []

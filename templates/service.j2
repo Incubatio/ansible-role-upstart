@@ -1,0 +1,60 @@
+#!upstart
+
+description "{{ upstart_description }}"
+
+{% for v in upstart_start_on %}
+start on {{ v }}
+{% endfor %}
+{% for v in upstart_stop_on %}
+stop on {{ v }}
+{% endfor %}
+
+#respawn limit 5 60
+{% for v in upstart_config %}
+{{ v }}
+{% endfor %}
+
+# export FOO=bar
+{% for k, v in env_vars.iteritems() %}
+env {{k}}={{v}}
+export {{k}}
+{% endfor %}
+
+# sudo -u user:group exec command
+script
+{% for v in upstart_script %}
+  {{ v }}
+{% endfor %}
+end script
+
+{% if upstart_pre_start_script|length > 0 %}
+pre-start script
+{% for v in upstart_pre_start_script %}
+  {{ v }}
+{% endfor %}
+end script
+{% endif %}
+
+{% if upstart_post_start_script|length > 0 %}
+post-start script
+{% for v in upstart_post_start_script %}
+  {{ v }}
+{% endfor %}
+end script
+{% endif %}
+
+{% if upstart_pre_stop_script|length > 0 %}
+pre-stop script
+{% for v in upstart_pre_stop_script %}
+  {{ v }}
+{% endfor %}
+end script
+{% endif %}
+
+{% if upstart_post_stop_script|length > 0 %}
+post-stop script
+{% for v in upstart_post_stop_script %}
+  {{ v }}
+{% endfor %}
+end script
+{% endif %}

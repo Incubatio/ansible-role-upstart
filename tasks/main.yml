@@ -1,0 +1,12 @@
+---
+- name: "Add upstart service to /etc/init/"
+  template:
+    src: service.j2
+    dest: "/etc/init/{{ upstart_name }}.conf"
+
+- name: "Add symbolic link to enable service via /etc/init.d/"
+  file:
+    state: link
+    src: /lib/init/upstart-job
+    dest: /etc/init.d/{{ upstart_name }}
+    force: yes

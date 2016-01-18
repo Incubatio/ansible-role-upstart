@@ -1,0 +1,23 @@
+---
+
+# mandatory vars:
+#upstart_script: []
+#upstart_name
+
+# optional vars:
+upstart_description: "No Description"
+
+upstart_start_on:
+  - "runlevel [2345]"
+
+upstart_stop_on:
+  - "runlevel [!2345]"
+
+upstart_config: []
+
+env_vars: []
+
+upstart_pre_start_script: []
+upstart_post_start_script: []
+upstart_pre_stop_script: []
+upstart_post_stop_script: []
