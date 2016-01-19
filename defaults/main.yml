@@ -15,7 +15,7 @@ upstart_stop_on:
 
 upstart_config: []
 
-env_vars: []
+env_vars: {}
 
 upstart_pre_start_script: []
 upstart_post_start_script: []
